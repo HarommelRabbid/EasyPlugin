@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.16)
 
 ## This includes the Vita toolchain, must go before project definition
 # It is a convenience so you do not have to type 
