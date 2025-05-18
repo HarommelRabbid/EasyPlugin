@@ -92,8 +92,8 @@ int main() {
 
     SharedData sharedData;
 
-    if(doesDirExist("ux0:tai")) sharedData.taiConfigPath = "ux0:tai/";
-    else if(doesDirExist("ur0:tai")) sharedData.taiConfigPath = "ur0:tai/";
+    if(doesDirExist("ur0:tai")) sharedData.taiConfigPath = "ur0:tai/";
+    else if(doesDirExist("ux0:tai")) sharedData.taiConfigPath = "ux0:tai/";
     else return -1;
 
     sharedData.taiConfig = Filesystem::readFile(sharedData.taiConfigPath+"config.txt");
