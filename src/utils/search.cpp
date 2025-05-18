@@ -71,7 +71,7 @@ int initImeDialog(char *title, char *initial_text, int max_text_length) {
 
 	param.supportedLanguages = 0x0001FFFF;
 	param.languagesForced = SCE_TRUE;
-	param.type = SCE_IME_TYPE_BASIC_LATIN;
+	param.type = SCE_IME_TYPE_DEFAULT;
 	param.title = ime_title_utf16;
 	param.maxTextLength = max_text_length;
 	param.initialText = ime_initial_text_utf16;
