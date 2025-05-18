@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.6)
 
 ## This includes the Vita toolchain, must go before project definition
 # It is a convenience so you do not have to type 
@@ -67,6 +67,7 @@ target_link_libraries(easyplugin
     ${CURL_LIBRARIES}
     ${OPENSSL_LIBRARIES}
     freetype
+    bz2
     png
     jpeg
     z
@@ -98,6 +99,7 @@ vita_create_vpk(easyplugin.vpk ${VITA_TITLEID} easyplugin.self
   VERSION ${VITA_VERSION}
   NAME ${VITA_APP_NAME}
   FILE sce_sys/icon0.png sce_sys/icon0.png
+  FILE sce_sys/pic0.png sce_sys/pic0.png
   FILE sce_sys/livearea/contents/bg.png sce_sys/livearea/contents/bg.png
   FILE sce_sys/livearea/contents/startup.png sce_sys/livearea/contents/startup.png
   FILE sce_sys/livearea/contents/template.xml sce_sys/livearea/contents/template.xml

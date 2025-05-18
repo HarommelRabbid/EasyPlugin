@@ -8,7 +8,8 @@
 
 #include "utils/json.hpp"
 
-#define imageWebBase "http://rinnegatamante.it/vitadb/"
+#define PARENT_URL "http://rinnegatamante.eu/vitadb/"
+#define HOMEBREW_URL PARENT_URL "list_plugins_json.php"
 
 using namespace std;
 
