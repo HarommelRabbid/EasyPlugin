@@ -1,13 +1,5 @@
 #define _GNU_SOURCE
-#include <psp2/kernel/processmgr.h>
-#include <psp2/display.h>
-
-#include <psp2/net/net.h>
-#include <psp2/net/netctl.h>
-#include <psp2/net/http.h>
-#include <psp2/libssl.h>
-
-#include <psp2/io/fcntl.h>
+#include <vitasdk.h>
 #include <curl/curl.h>
 
 #include <stdio.h>
@@ -89,8 +81,8 @@ void curlDownload(const char *url, const char *dest) {
 std::string curlDownloadKeepName(char const*const url, std::string dst) {
     CURL        *curl;
 
-    SceUID file = sceIoOpen("ux0:data/Easy_Plugins/plugin.tmp", SCE_O_CREAT | SCE_O_WRONLY, 0777);
-    SceUID head = sceIoOpen("ux0:data/Easy_Plugins/head.tmp", SCE_O_CREAT | SCE_O_WRONLY, 0777);
+    SceUID file = sceIoOpen("ux0:data/EasyPlugin/plugin.tmp", SCE_O_CREAT | SCE_O_WRONLY, 0777);
+    SceUID head = sceIoOpen("ux0:data/EasyPlugin/head.tmp", SCE_O_CREAT | SCE_O_WRONLY, 0777);
 
     curl = curl_easy_init();
     if (curl) {
@@ -111,7 +103,7 @@ std::string curlDownloadKeepName(char const*const url, std::string dst) {
     sceIoClose(file);
     sceIoClose(head);
 
-    std::string header = Filesystem::readFile("ux0:data/Easy_Plugins/head.tmp");
+    std::string header = Filesystem::readFile("ux0:data/EasyPlugin/head.tmp");
 
 	if(header.find("filename=\"") != string::npos) {
 		header = header.substr(header.find("filename=\"")+10);
@@ -127,10 +119,10 @@ std::string curlDownloadKeepName(char const*const url, std::string dst) {
 		}
 	}
 
-    Filesystem::copyFile("ux0:data/Easy_Plugins/plugin.tmp", dst+header);
+    Filesystem::copyFile("ux0:data/EasyPlugin/plugin.tmp", dst+header);
 
-    sceIoRemove("ux0:data/Easy_Plugins/plugin.tmp");
-    sceIoRemove("ux0:data/Easy_Plugins/head.tmp");
+    sceIoRemove("ux0:data/EasyPlugin/plugin.tmp");
+    sceIoRemove("ux0:data/EasyPlugin/head.tmp");
     
     curl_easy_cleanup(curl);
 	curl_global_cleanup();

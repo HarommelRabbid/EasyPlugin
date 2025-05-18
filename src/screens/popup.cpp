@@ -1,7 +1,6 @@
 #include <algorithm>
 
-#include <psp2/io/dirent.h>
-#include <psp2/io/stat.h>
+#include <vitasdk.h>
 
 #include "../main.hpp"
 #include "../utils/vhbb/zip.h"

@@ -1,8 +1,6 @@
 #pragma once
 
-#include <psp2/io/fcntl.h>
-#include <psp2/io/dirent.h> 
-#include <psp2/kernel/clib.h>
+#include <vitasdk.h>
 #include <vita2d.h>
 #include <string>
 #include <fstream>

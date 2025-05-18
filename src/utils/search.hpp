@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <psp2/ime_dialog.h>
+#include <vitasdk.h>
 #include "json.hpp"
 
 #define IME_DIALOG_RESULT_NONE 0

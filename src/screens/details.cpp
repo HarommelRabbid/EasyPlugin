@@ -32,7 +32,7 @@ void Details::draw(SharedData &sharedData, unsigned int button) {
         }
     }
 
-    vita2d_font_draw_textf(sharedData.font, 20, 45, RGBA8(255,255,255,255), 35, "%s", (sharedData.plugins[sharedData.cursorY]["name"].get<string>() + " " + sharedData.plugins[sharedData.cursorY]["version"].get<string>()).c_str());
+    vita2d_font_draw_textf(sharedData.font, 20, 45, RGBA8(255,255,255,255), 32, "%s", (sharedData.plugins[sharedData.cursorY]["name"].get<string>() + " " + sharedData.plugins[sharedData.cursorY]["version"].get<string>()).c_str());
     
     vita2d_font_draw_textf(sharedData.font, 20, 350, RGBA8(255,255,255,255), 32, "%s", longDescription.c_str());
 

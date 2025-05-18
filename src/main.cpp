@@ -13,7 +13,7 @@
 #include "screens/details.hpp"
 #include "screens/popup.hpp"
 
-SceCtrlData pad;
+SceCtrlData pad, oldpad;
 
 AppInfo::AppInfo(string p_appID, string p_title, string fileLocation) {
     appID = p_appID;
@@ -78,7 +78,7 @@ int main() {
     vita2d_init_advanced_with_msaa((1 * 1024 * 1024), SCE_GXM_MULTISAMPLE_4X);
     initSceAppUtil();
 
-    Filesystem::removePath("ux0:data/EasyPlugin");
+    //Filesystem::removePath("ux0:data/EasyPlugin");
     Filesystem::removePath("ux0:data/Easy_Plugins");
     Filesystem::mkDir("ux0:data/EasyPlugin");
 
@@ -115,9 +115,9 @@ int main() {
 
         vita2d_draw_texture(bgIMG, 0, 0);
 
-        if(pad.buttons != SCE_CTRL_CROSS) sharedData.blockCross = false;
-        if(pad.buttons != SCE_CTRL_CIRCLE) sharedData.blockCircle = false;
-        if(pad.buttons != SCE_CTRL_START) sharedData.blockStart = false;
+        if(!(pad.buttons == SCE_CTRL_CROSS) && (oldpad.buttons == SCE_CTRL_CROSS)) sharedData.blockCross = false;
+        if(!(pad.buttons != SCE_CTRL_CIRCLE) && (oldpad.buttons == SCE_CTRL_CIRCLE)) sharedData.blockCircle = false;
+        if(!(pad.buttons != SCE_CTRL_START) && (oldpad.buttons == SCE_CTRL_START)) sharedData.blockStart = false;
         
         if(sharedData.scene == 0) listView.draw(sharedData, pad.buttons);
         
@@ -130,12 +130,13 @@ int main() {
         vita2d_swap_buffers();
         sceDisplayWaitVblankStart();
 
-        if(pad.buttons == SCE_CTRL_SELECT) {
+        if(!(pad.buttons == SCE_CTRL_SELECT) && (oldpad.buttons == SCE_CTRL_SELECT)) {
             break;
         }
-        if(pad.buttons == SCE_CTRL_START && !sharedData.blockStart) {
+        if((!(pad.buttons != SCE_CTRL_START) && (oldpad.buttons == SCE_CTRL_START)) && !sharedData.blockStart) {
             if(sharedData.scene != 2) scePowerRequestColdReset();
         }
+        oldpad = pad;
     }
 
     httpTerm();

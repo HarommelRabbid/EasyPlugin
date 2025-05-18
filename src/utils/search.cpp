@@ -1,7 +1,6 @@
 #include <algorithm>
 
-#include <psp2/sysmodule.h>
-#include <psp2/ime_dialog.h>
+#include <vitasdk.h>
 #include <string>
 
 #include "search.hpp"

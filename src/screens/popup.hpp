@@ -1,6 +1,6 @@
 #pragma once
 
-#include <psp2/io/dirent.h>
+#include <vitasdk.h>
 #include <vector>
 
 #include "../utils/filesystem.hpp"
@@ -31,7 +31,7 @@ class Popup {
         string plPath;
         string plName = "";
         vector<string> installFiles;
-        vita2d_texture *desc = vita2d_load_PNG_file("ux0:app/ESPL00009/resources/desc2.png");
-        vita2d_texture *desc2 = vita2d_load_PNG_file("ux0:app/ESPL00009/resources/desc3.png");
-        vita2d_texture *desc3 = vita2d_load_PNG_file("ux0:app/ESPL00009/resources/desc4.png");
+        vita2d_texture *desc = vita2d_load_PNG_file("app0:resources/desc2.png");
+        vita2d_texture *desc2 = vita2d_load_PNG_file("app0:resources/desc3.png");
+        vita2d_texture *desc3 = vita2d_load_PNG_file("app0:resources/desc4.png");
 };

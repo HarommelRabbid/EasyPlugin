@@ -82,11 +82,11 @@ void List::draw(SharedData &sharedData, unsigned int button) {
                     subPaths = split(sharedData.plugins[sharedData.cursorY]["screenshots"].get<string>().c_str(), ';');
 
                     for(string subPath : subPaths) {
-                        Filesystem::mkDir("ux0:data/Easy_Plugins/screenshots");
-                        curlDownload((PARENT_URL+subPath).c_str(), ("ux0:data/Easy_Plugins/"+subPath).c_str());
+                        Filesystem::mkDir("ux0:data/EasyPlugin/screenshots");
+                        curlDownload((PARENT_URL+subPath).c_str(), ("ux0:data/EasyPlugin/"+subPath).c_str());
 
                         vita2d_texture *img;
-                        string img_file = ("ux0:data/Easy_Plugins/"+subPath);
+                        string img_file = ("ux0:data/EasyPlugin/"+subPath);
 
                         img = vita2d_load_PNG_file(img_file.c_str());
 

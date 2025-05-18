@@ -1,8 +1,6 @@
 #pragma once
 
-#include <psp2/io/stat.h>
-#include <psp2/io/dirent.h>
-#include <psp2/io/fcntl.h>
+#include <vitasdk.h>
 
 #define SCE_ERROR_ERRNO_EEXIST 0x80010011
 #define MAX_PATH_LENGTH 1024
