@@ -17,13 +17,13 @@ project(easyplugin)
 include("${VITASDK}/share/vita.cmake" REQUIRED)
 
 set(VITA_APP_NAME "EasyPlugin")
-set(VITA_TITLEID  "ESPL00009")
+set(VITA_TITLEID  "EASYPLUG0")
 set(VITA_VERSION  "01.00")
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,-q -Wall -O3")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,-q -Wall")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(VITA_MKSFOEX_FLAGS "${VITA_MKSFOEX_FLAGS} -d PARENTAL_LEVEL=7")
+set(VITA_MKSFOEX_FLAGS "${VITA_MKSFOEX_FLAGS} -d PARENTAL_LEVEL=1")
 
 
 find_package(CURL REQUIRED)
@@ -73,6 +73,7 @@ target_link_libraries(easyplugin
     z
     m
     c
+    taihen_stub
     SceGxm_stub
     SceSqlite_stub 
     SceCtrl_stub
