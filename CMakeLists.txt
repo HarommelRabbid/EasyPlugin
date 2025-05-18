@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.6)
 
 ## This includes the Vita toolchain, must go before project definition
 # It is a convenience so you do not have to type 
@@ -67,6 +67,7 @@ target_link_libraries(easyplugin
     ${CURL_LIBRARIES}
     ${OPENSSL_LIBRARIES}
     freetype
+    bz2
     png
     jpeg
     z
