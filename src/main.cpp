@@ -1,11 +1,5 @@
 #include <vita2d.h>
-#include <psp2/kernel/processmgr.h>
-#include <psp2/power.h> 
-#include <psp2/io/fcntl.h>
-#include <psp2/sqlite.h>
-#include <psp2/apputil.h>
-#include <psp2/display.h>
-#include <psp2/ime_dialog.h>
+#include <vitasdk.h>
 #include <string>
 
 #include "main.hpp"
@@ -81,19 +75,20 @@ int getAppData(vector<AppInfo> &ret) {
 }
 
 int main() {
-    vita2d_init();
+    vita2d_init_advanced_with_msaa((1 * 1024 * 1024), SCE_GXM_MULTISAMPLE_4X);
     initSceAppUtil();
 
+    Filesystem::removePath("ux0:data/EasyPlugin");
     Filesystem::removePath("ux0:data/Easy_Plugins");
-    Filesystem::mkDir("ux0:data/Easy_Plugins");
+    Filesystem::mkDir("ux0:data/EasyPlugin");
 
     vita2d_set_clear_color(RGBA8(255,255,255,255));
 
-    vita2d_texture *bgIMG = vita2d_load_PNG_file("ux0:app/ESPL00009/resources/bg.png");
+    vita2d_texture *bgIMG = vita2d_load_PNG_file("app0:resources/bg.png");
     
     httpInit();
     netInit();
-    curlDownload(HOMEBREW_URL, "ux0:data/Easy_Plugins/plugins.json");
+    curlDownload(HOMEBREW_URL, "ux0:data/EasyPlugin/plugins.json");
 
     SharedData sharedData;
 
@@ -103,7 +98,7 @@ int main() {
 
     sharedData.taiConfig = Filesystem::readFile(sharedData.taiConfigPath+"config.txt");
 
-    sharedData.plugins = json::parse(Filesystem::readFile("ux0:data/Easy_Plugins/plugins.json"));
+    sharedData.plugins = json::parse(Filesystem::readFile("ux0:data/EasyPlugin/plugins.json"));
 
     getAppData(sharedData.appData);
 
