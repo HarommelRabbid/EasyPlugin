@@ -116,8 +116,8 @@ int main() {
         vita2d_draw_texture(bgIMG, 0, 0);
 
         if(!(pad.buttons == SCE_CTRL_CROSS) && (oldpad.buttons == SCE_CTRL_CROSS)) sharedData.blockCross = false;
-        if(!(pad.buttons != SCE_CTRL_CIRCLE) && (oldpad.buttons == SCE_CTRL_CIRCLE)) sharedData.blockCircle = false;
-        if(!(pad.buttons != SCE_CTRL_START) && (oldpad.buttons == SCE_CTRL_START)) sharedData.blockStart = false;
+        if(!(pad.buttons == SCE_CTRL_CIRCLE) && (oldpad.buttons == SCE_CTRL_CIRCLE)) sharedData.blockCircle = false;
+        if(!(pad.buttons == SCE_CTRL_START) && (oldpad.buttons == SCE_CTRL_START)) sharedData.blockStart = false;
         
         if(sharedData.scene == 0) listView.draw(sharedData, pad.buttons);
         
@@ -133,7 +133,7 @@ int main() {
         if(!(pad.buttons == SCE_CTRL_SELECT) && (oldpad.buttons == SCE_CTRL_SELECT)) {
             break;
         }
-        if((!(pad.buttons != SCE_CTRL_START) && (oldpad.buttons == SCE_CTRL_START)) && !sharedData.blockStart) {
+        if((!(pad.buttons == SCE_CTRL_START) && (oldpad.buttons == SCE_CTRL_START)) && !sharedData.blockStart) {
             if(sharedData.scene != 2) scePowerRequestColdReset();
         }
         oldpad = pad;
